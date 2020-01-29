@@ -51,7 +51,7 @@ Player.prototype.rollDice = function() {
   return this.turnScore;
 }
 
-// Front-end logic:
+
 var game = new Game();
 
 function showPlayerScore(playerId, turnScore, playerScore) {
@@ -69,11 +69,15 @@ function endTurn(id) {
   player.totalScore += player.turnScore;
   showPlayerScore(player.id, player.turnScore, player.totalScore);
   player.turnScore = 0;
+  if (player.totalScore >= 100) {
+    alert(player.name + " won!");
+  }
   if (game.currentPlayer === 1) {
     game.currentPlayer = 2;
   } else {
     game.currentPlayer = 1;
   }
+  $(".player" + id + "TurnScore").html("0");
 }
 
 $(document).ready(function() {
