@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/jquery-3.4.1.js"></script>
+  <script src="js/scripts.js"></script>
+  <title>Dice Game</title>
+</head>
+<body>
+  <div class="container">
+    <div id="initialScreen">
+      <div class="jumbotron">
+
+        <h2>Play Pig Dice</h2>
+      </div>
+      <button id="start-play" type="submit" class="btn btn-success">Play game!</button>
+    </div>
+
+    <div id="gameScreen">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="well">
+            <h4>Name1</h4>
+            <p>Dice Roll <span class="player1Roll"></span></p>
+            <p>Total game score: <span class="player1Total"></span></p>
+            <p>Current turn score: <span class="player1TurnScore"></span></p>
+            <button id="player1Roll">Roll</button>
+            <button id="player1Hold">Hold</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="well">
+            <h4>Name2</h4>
+            <p>Dice Roll <span class="player2Roll"></span></p>
+            <p>Total game score: <span class="player2Total"></span></p>
+            <p>Current turn score: <span class="player2TurnScore"></span></p>
+            <button id="player2Roll">Roll</button>
+            <button id="player2Hold">Hold</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  
+</body>
+</html>
