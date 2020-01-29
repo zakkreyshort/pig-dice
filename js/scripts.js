@@ -45,10 +45,21 @@ Player.prototype.rollDice = function() {
     this.turnScore = 0;
     showDiceRoll(this.id, diceRoll);
     endTurn(this.id);
+    this.switchTurn(this.id);
   }
   showPlayerScore(this.id, this.turnScore, this.totalScore);
   return this.turnScore;
 }
+
+switchTurn = function(id){
+  var currentPlayer = game.findPlayer(id);
+  currentPlayer = currentPlayer == 1 ? 2 : 1;
+}
+
+ updateGameScore = function(game, id){
+    game.players[id].totalScore += turnScore;
+  }
+
 
 // Front-end logic:
 var game = new Game();
@@ -66,11 +77,9 @@ function showDiceRoll(playerId, roll) {
 
 function endTurn(id) {
   var currentPlayer = game.findPlayer(id);
-  $("button#player" + currentPlayer.id + "Hold").click(function() {
-    currentPlayer.totalScore += turnScore;
-    showPlayerScore(id);
-    turnScore = 0;
-  });
+  currentPlayer.totalScore += currentPlayer.turnScore;
+  showPlayerScore(currentPlayer.id, currentPlayer.turnScore, currentPlayer.totalScore);
+  currentPlayer.turnScore = 0;
 }
 
 $(document).ready(function() {
@@ -97,13 +106,15 @@ $(document).ready(function() {
 
     $("button#roll").click(function(event){
       event.preventDefault();
-
-      player1.rollDice();
+      game.players[game.currentId].rollDice();
       
     });
 
-    // $("button#hold").click(function() {
-      
-    })
-  })
-// })
+    $("button#hold").click(function(event) {
+      event.preventDefault();
+      endTurn(game.currentId);
+      updateGameScore(game, game.currentId);
+      switchTurn(game.currentId);
+    });
+  });
+});
