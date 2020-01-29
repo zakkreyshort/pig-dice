@@ -2,6 +2,7 @@
 function Game() {
   this.players = [];
   this.currentId = 0;
+  this.currentPlayer = 1;
 }
 
 Game.prototype.assignId = function() {
@@ -31,7 +32,7 @@ function Player(name, totalScore, turnScore) {
   this.turnScore = turnScore;
 }
 
-generateNumber = function() {
+var generateNumber = function() {
   var numberRolled = Math.floor( Math.random() * 6) +1;
   return numberRolled;
 }
@@ -41,33 +42,21 @@ Player.prototype.rollDice = function() {
   if (diceRoll != 1) {
     this.turnScore += diceRoll;
     showDiceRoll(this.id, diceRoll);
-  } else if (diceRoll === 1) {
+  } else if (diceRoll == 1) {
     this.turnScore = 0;
     showDiceRoll(this.id, diceRoll);
     endTurn(this.id);
-    this.switchTurn(this.id);
   }
   showPlayerScore(this.id, this.turnScore, this.totalScore);
   return this.turnScore;
 }
 
-switchTurn = function(id){
-  var currentPlayer = game.findPlayer(id);
-  currentPlayer = currentPlayer == 1 ? 2 : 1;
-}
-
- updateGameScore = function(game, id){
-    game.players[id].totalScore += turnScore;
-  }
-
-
 // Front-end logic:
 var game = new Game();
 
 function showPlayerScore(playerId, turnScore, playerScore) {
-  var player = game.findPlayer(playerId);
-  $(".player" + player.id + "TurnScore").html(turnScore);
-  $(".player" + player.id + "Total").html(playerScore);
+  $(".player" + playerId + "TurnScore").html(turnScore);
+  $(".player" + playerId + "Total").html(playerScore);
 }
 
 function showDiceRoll(playerId, roll) {
@@ -76,10 +65,15 @@ function showDiceRoll(playerId, roll) {
 }
 
 function endTurn(id) {
-  var currentPlayer = game.findPlayer(id);
-  currentPlayer.totalScore += currentPlayer.turnScore;
-  showPlayerScore(currentPlayer.id, currentPlayer.turnScore, currentPlayer.totalScore);
-  currentPlayer.turnScore = 0;
+  var player = game.findPlayer(id);
+  player.totalScore += player.turnScore;
+  showPlayerScore(player.id, player.turnScore, player.totalScore);
+  player.turnScore = 0;
+  if (game.currentPlayer === 1) {
+    game.currentPlayer = 2;
+  } else {
+    game.currentPlayer = 1;
+  }
 }
 
 $(document).ready(function() {
@@ -96,9 +90,6 @@ $(document).ready(function() {
     var player2 = new Player(player2Name, player2Score, player2Turn);
     game.addPlayer(player1);
     game.addPlayer(player2);
-
-    console.log(player1.id);
-    console.log(player2.id);
     $("#initialScreen").hide();
     $("#gameScreen").show();
     $("#name1").html(player1Name);
@@ -106,15 +97,13 @@ $(document).ready(function() {
 
     $("button#roll").click(function(event){
       event.preventDefault();
-      game.players[game.currentId].rollDice();
-      
+      var playerRolling = game.findPlayer(game.currentPlayer);
+      playerRolling.rollDice();
     });
 
     $("button#hold").click(function(event) {
       event.preventDefault();
-      endTurn(game.currentId);
-      updateGameScore(game, game.currentId);
-      switchTurn(game.currentId);
+      endTurn(game.currentPlayer);
     });
   });
 });
