@@ -25,10 +25,10 @@ Game.prototype.addPlayer = function(player){
   this.players.push(player);
 }
 
-function Player(name, totalScore, turn) {
+function Player(name, totalScore, turnScore) {
   this.name = name;
   this.totalScore = totalScore;
-  this.turn = turn;
+  this.turnScore = turnScore;
 }
 
 generateNumber = function() {
@@ -37,26 +37,26 @@ generateNumber = function() {
 }
 
 Player.prototype.rollDice = function() {
-  var turnScore = 0;
   var diceRoll = generateNumber();
   if (diceRoll != 1) {
-    turnScore += diceRoll;
+    this.turnScore += diceRoll;
     showDiceRoll(this.id, diceRoll);
   } else if (diceRoll === 1) {
-    turnScore = 0;
+    this.turnScore = 0;
     showDiceRoll(this.id, diceRoll);
     endTurn(this.id);
   }
-  return turnScore;
+  showPlayerScore(this.id, this.turnScore, this.totalScore);
+  return this.turnScore;
 }
 
 // Front-end logic:
 var game = new Game();
 
-function showPlayerScore(playerId) {
+function showPlayerScore(playerId, turnScore, playerScore) {
   var player = game.findPlayer(playerId);
-  $(".player" + player.id + "TurnScore").html();
-  $(".player" + player.id + "Total").html();
+  $(".player" + player.id + "TurnScore").html(turnScore);
+  $(".player" + player.id + "Total").html(playerScore);
 }
 
 function showDiceRoll(playerId, roll) {
@@ -99,7 +99,7 @@ $(document).ready(function() {
       event.preventDefault();
 
       player1.rollDice();
-      showPlayerScore(player1.id);
+      
     });
 
     // $("button#hold").click(function() {
