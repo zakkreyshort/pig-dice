@@ -7,6 +7,9 @@ body {
   text-align: center;
   background-image: radial-gradient(#7bc0f8, #574cf3, #301934);
   margin-top: 15%;
+  font-family: 'Bowlby One SC', cursive;
+  color: #f5f5f5;
+  -webkit-text-stroke: 1px #574cf3;
 }
 
 #gameScreen {
@@ -24,7 +27,7 @@ form {
 }
 
 label{
-  font-size: large;
+  font-size: 2em;
 }
 
 button#roll {
@@ -58,17 +61,16 @@ button#hold:hover {
 
 button#start-play {
   width: 100%;
-  margin: 30px 0px;
-  border: 2px solid #111111;
-  color: #111111;
-  font-size: medium;
   margin-top: 20px;
+  border: 2px solid #574cf3;
+  color: #574cf3;
+  font-size: medium;
 }
 
 button#start-play:hover {
   width: 100%;
   color: #f5f5f5;
-  background-color: #111111;
+  background-color: #574cf3;
   font-size: medium;
 }
 
