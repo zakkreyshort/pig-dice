@@ -1,3 +1,78 @@
+body {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #c9e4fa;
+}
+
+.jumbotron{
+  text-align: center;
+  background-image: radial-gradient(#7bc0f8, #574cf3, #301934);
+  margin-top: 15%;
+}
+
 #gameScreen {
   display: none;
+  margin-top: 15%;
+}
+
+form {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-group {
+  width: 40%;
+}
+
+label{
+  font-size: large;
+}
+
+button#roll {
+  width: 40%;
+  border: 2px solid #111111;
+  color: #111111;
+  font-size: medium;
+}
+
+button#roll:hover {
+  width: 40%;
+  color: #f5f5f5;
+  background-color: #111111;
+  font-size: medium;
+}
+
+button#hold {
+  width: 40%;
+  color: #f5f5f5;
+  background-color: #f30c0c;
+  font-size: medium;
+}
+
+button#hold:hover {
+  width: 40%;
+  border: 2px solid #f30c0c;
+  color: #f30c0c;
+  background-color: #f5f5f5;
+  font-size: medium;
+}
+
+button#start-play {
+  width: 100%;
+  margin: 30px 0px;
+  border: 2px solid #111111;
+  color: #111111;
+  font-size: medium;
+  margin-top: 20px;
+}
+
+button#start-play:hover {
+  width: 100%;
+  color: #f5f5f5;
+  background-color: #111111;
+  font-size: medium;
+}
+
+#buttons {
+  display: flex;
+  justify-content: space-around;
 }

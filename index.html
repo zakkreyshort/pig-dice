@@ -14,15 +14,36 @@
 
         <h2>Play Pig Dice</h2>
       </div>
-      <form>
-        <label for="player1Name">Player 1 Name:</label>
-        <input type="text" name="player1" id="player1Name">
-        <label for="player2Name">Player 2 Name:</label>
-        <input type="text" name="player2" id="player2Name">
-        <button id="start-play" type="submit" class="btn btn-success">Play game!</button>
-      </form>
+      <div class="row">
+        <form>
+          <div class="form-group">
+            <label for="player1Name">Player 1 Name:</label>
+            <input class="form-control" type="text" name="player1" id="player1Name">
+          </div>
+          <div class="form-group">
+            <label for="player2Name">Player 2 Name:</label>
+            <input class="form-control" type="text" name="player2" id="player2Name">
+          </div>
+      </div>
+          <button id="start-play" type="submit" class="btn">Play game!</button>
+        </form>
     </div>
+
     <div id="gameScreen">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="well" id="instructions">
+            <h1>Let's Play Pig Dice!</h1>
+            <h3>Rules:</h3>
+            <p>Each turn, a player repeatedly rolls a die until either a 1 is rolled or the player decides to "hold":</p>
+            <ul>
+              <li>If the player rolls a 1, they score nothing and it becomes the next player's turn.</li>
+              <li>If the player rolls any other number, it is added to their turn total and the player's turn continues.</li>
+              <li>If a player chooses to "hold", their turn total is added to their score, and it becomes the next player's turn.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-6">
           <div class="well" id="player1">
@@ -40,8 +61,10 @@
             <p>Current turn score: <span class="player2TurnScore"></span></p>
           </div>
         </div>
-        <button id="roll">Roll</button>
-        <button id="hold">Hold</button>
+      </div>
+      <div class="row" id="buttons">
+          <button class="btn" id="roll">Roll</button>
+          <button class="btn" id="hold">Hold</button>
       </div>
     </div>
   </div>
