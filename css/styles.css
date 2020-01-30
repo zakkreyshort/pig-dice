@@ -1,15 +1,29 @@
 body {
+  height: 100%;
+  margin: 0;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  background-color: #c9e4fa;
+  background-image: radial-gradient(#7bc0f8, #574cf3, #301934);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.jumbotron{
+html {
+  height: 100%;
+}
+
+.jumbotron {
   text-align: center;
-  background-image: radial-gradient(#7bc0f8, #574cf3, #301934);
+  background-color: #f5f5f5;
+  border: 2px solid #111111;
   margin-top: 15%;
   font-family: 'Bowlby One SC', cursive;
-  color: #f5f5f5;
-  -webkit-text-stroke: 1px #574cf3;
+  color: #7bc0f8;
+  -webkit-text-stroke: 2px #574cf3;
+}
+
+.jumbotron h2 {
+  font-size: 5em;
 }
 
 #gameScreen {
@@ -47,14 +61,14 @@ button#roll:hover {
 button#hold {
   width: 40%;
   color: #f5f5f5;
-  background-color: #f30c0c;
+  background-color: #111111;
   font-size: medium;
 }
 
 button#hold:hover {
   width: 40%;
-  border: 2px solid #f30c0c;
-  color: #f30c0c;
+  border: 2px solid #111111;
+  color: #111111;
   background-color: #f5f5f5;
   font-size: medium;
 }
@@ -62,15 +76,15 @@ button#hold:hover {
 button#start-play {
   width: 100%;
   margin-top: 20px;
-  border: 2px solid #574cf3;
-  color: #574cf3;
+  border: 2px solid #111111;
+  color: #111111;
   font-size: medium;
 }
 
 button#start-play:hover {
   width: 100%;
   color: #f5f5f5;
-  background-color: #574cf3;
+  background-color: #111111;
   font-size: medium;
 }
 
